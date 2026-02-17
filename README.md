@@ -7,11 +7,9 @@ It brings e-commerce–level personalization, intelligence, and automation into 
 The system uses multiple intelligent agents to understand user intent, check simulated real-time inventory, generate optimized indoor routes, and provide dynamic shopping assistance — all without requiring app installation.
 
 ---
-
 ## 📖 Overview
 
 With the rapid growth of platforms like Amazon and Flipkart, physical malls struggle with personalization and digital intelligence. Shoppers often feel overwhelmed by numerous stores and lack real-time visibility into inventory, discounts, and navigation.
-
 Mall-Mind bridges this gap by combining AI-driven personalization with real-world shopping experiences.
 
 ---
