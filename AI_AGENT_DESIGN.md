@@ -40,7 +40,7 @@ Searches the mall inventory database for products matching user intent.
     "required": ["product"]
   }
 }
-
+```
 ## Returns
 - List of matched products  
 - Store name  
