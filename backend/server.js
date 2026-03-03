@@ -1,10 +1,13 @@
+
+import { schema } from "./graphql/schema.js";
+import { root } from "./graphql/resolvers.js";
 require("dotenv").config();
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const cors = require("cors");
 
-const typeDefs = require("./schema");
-const resolvers = require("./resolvers");
+const typeDefs = require("./graphql/schema");
+const resolvers = require("./graphql/resolvers");
 
 async function startServer() {
   const app = express();

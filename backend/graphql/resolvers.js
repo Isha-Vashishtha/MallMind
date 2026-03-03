@@ -1,8 +1,8 @@
 const { v4: uuid } = require("uuid");
 
-const inventory = require("./data/inventory.json");
-const stylistAgent = require("./agents/stylistAgent");
-const navigatorAgent = require("./agents/navigatorAgent");
+const inventory = require("../data/inventory.json");
+const stylistAgent = require("../agents/stylistAgent");
+const navigatorAgent = require("../agents/navigatorAgent");
 
 let sessions = [];
 
