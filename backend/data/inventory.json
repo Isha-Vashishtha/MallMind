@@ -1,0 +1,22 @@
+[
+  {
+    "store": "Zara",
+    "products": [
+      {
+        "name": "Blue Suit",
+        "sizes": ["M", "L"],
+        "price": 280
+      }
+    ]
+  },
+  {
+    "store": "H&M",
+    "products": [
+      {
+        "name": "Blue Suit",
+        "sizes": ["S", "M"],
+        "price": 250
+      }
+    ]
+  }
+]
