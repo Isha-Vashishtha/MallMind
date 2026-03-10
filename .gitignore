@@ -1,5 +1,18 @@
-node_modules
+# logs
+*.log
+debug.log
+
+# dependencies
+node_modules/
+
+# env
 .env
+
+# build
 .next
 dist
 build
+
+# OS
+.DS_Store
+Thumbs.db
