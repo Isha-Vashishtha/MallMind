@@ -1,43 +1,42 @@
-const { v4: uuid } = require("uuid");
-
-const inventory = require("../data/inventory.json");
-const stylistAgent = require("../agents/stylistAgent");
-const navigatorAgent = require("../agents/navigatorAgent");
-
-let sessions = [];
-
-module.exports = {
+export const resolvers = {
   Query: {
-    createSession: () => {
-      const session = {
-        id: uuid(),
-        createdAt: new Date().toISOString(),
+    shop: async (_, { input }) => {
+      const intent = await analyzeIntent(input);
+      const parsedBudget = intent.budget
+        ? parseInt(intent.budget.replace(/[^0-9]/g, ""))
+        : null;
+      let matches = [];
+      stores.forEach((store) => {
+        store.products.forEach((item) => {
+          const categoryMatch =
+            intent.product &&
+            item.category.toLowerCase().includes(intent.product.toLowerCase());
+          const colorMatch =
+            intent.color &&
+            item.color.toLowerCase() === intent.color.toLowerCase();
+          const priceMatch =
+            parsedBudget ? item.price <= parsedBudget : true;
+          if (categoryMatch && priceMatch) {
+            if (!intent.color || colorMatch) {
+              matches.push({
+                store: store.storeName,
+                location: store.location,
+                product: item.name,
+                price: item.price
+              });
+            }
+          }
+        });
+      });
+      let navigation = null;
+      if (matches.length > 0) {
+        navigation = findShortestPath("Entrance", matches[0].store);
+      }
+      return {
+        ...intent,
+        recommendations: matches,
+        navigation
       };
-      sessions.push(session);
-      return session;
-    },
-
-    searchInventory: (_, { keyword }) => {
-      return inventory.flatMap(store =>
-        store.products
-          .filter(p =>
-            p.name.toLowerCase().includes(keyword.toLowerCase())
-          )
-          .map(p => ({
-            store: store.store,
-            name: p.name,
-            sizes: p.sizes,
-            price: p.price
-          }))
-      );
-    },
-
-    stylistSuggestion: (_, { input }) => {
-      return stylistAgent.suggestStyle(input);
-    },
-
-    calculateRoute: (_, { start, end }) => {
-      return navigatorAgent.calculateRoute(start, end);
     }
   }
 };

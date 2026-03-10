@@ -1,28 +1,28 @@
-const { gql } = require("apollo-server-express");
+import { buildSchema } from "graphql";
 
-module.exports = gql`
-
-  type Session {
-    id: ID!
-    createdAt: String!
+export const schema = buildSchema(`
+  type Recommendation {
+    store: String
+    location: String
+    product: String
+    price: Int
   }
 
-  type Product {
-    store: String!
-    name: String!
-    sizes: [String!]!
-    price: Float!
+  type Navigation {
+    distance: Int
+    path: [String]
   }
 
-  type Route {
-    path: [String!]!
-    distance: Float!
+  type ShoppingResult {
+    product: String
+    color: String
+    budget: String
+    additional_request: String
+    recommendations: [Recommendation]
+    navigation: Navigation
   }
 
   type Query {
-    createSession: Session
-    searchInventory(keyword: String!): [Product]
-    stylistSuggestion(input: String!): String
-    calculateRoute(start: String!, end: String!): Route
+    shop(input: String!): ShoppingResult
   }
-`;
+`);

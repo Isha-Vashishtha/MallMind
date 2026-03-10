@@ -1,13 +1,38 @@
-exports.suggestStyle = (input) => {
-  input = input.toLowerCase();
+import OpenAI from "openai";
+import dotenv from "dotenv";
 
-  if (input.includes("wedding")) {
-    return "Formal Slim Fit Suit";
-  }
+dotenv.config();
 
-  if (input.includes("casual")) {
-    return "Smart Casual Blazer";
-  }
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-  return "Standard Fit";
-};
+export async function analyzeIntent(userInput) {
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [
+      {
+        role: "system",
+        content: `
+You are a smart retail AI assistant.
+Extract structured JSON from user input.
+
+Return ONLY valid JSON in this format:
+{
+  "product": "",
+  "color": "",
+  "budget": "",
+  "additional_request": ""
+}
+        `,
+      },
+      {
+        role: "user",
+        content: userInput,
+      },
+    ],
+    temperature: 0.2,
+  });
+
+  return JSON.parse(response.choices[0].message.content);
+}

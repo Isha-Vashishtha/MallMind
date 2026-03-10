@@ -13,6 +13,55 @@ With the rapid growth of platforms like Amazon and Flipkart, physical malls stru
 Mall-Mind bridges this gap by combining AI-driven personalization with real-world shopping experiences.
 
 ---
+## Architecture :
+MallMind
+│
+├── backend
+│   ├── agents
+│   │   stylistAgent.js
+│   │   inventoryAgent.js
+│   │
+│   ├── graphql
+│   │   schema.js
+│   │   resolvers.js
+│   │
+│   ├── navigation
+│   │   mallGraph.js
+│   │
+│   ├── models
+│   │   User.js
+│   │
+│   ├── middleware
+│   │   auth.js
+│   │   rateLimiter.js
+│   │
+│   ├── tests
+│   │   api.test.js
+│   │
+│   ├── server.js
+│   └── package.json
+│
+├── frontend
+│   ├── pages
+│   │   index.js
+│   │   chat.js
+│   │
+│   ├── components
+│   │   ChatBox.js
+│   │   StoreCard.js
+│   │
+│   └── package.json
+│
+├── docs
+│   synopsis.pdf
+│   architecture.png
+│
+├── .github
+│   workflows
+│   │   ci.yml
+│
+├── README.md
+└── docker-compose.yml
 
 ## 🎯 Problem Statement
 
