@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import { ApolloServer } from "apollo-server-express";
@@ -28,4 +29,10 @@ async function startServer() {
   });
 }
 
-startServer();
+// ⭐ Start server only when not testing
+if (process.env.NODE_ENV !== "test") {
+  startServer();
+}
+
+// ⭐ export express app for tests
+export default app;
