@@ -10,6 +10,10 @@ import { resolvers } from "./graphql/resolvers.js";
 const app = express();
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.status(200).send("MallMind API running");
+});
+
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
