@@ -1,13 +1,9 @@
 {
-  "name": "mall-mind",
+  "name": "mallmind",
   "version": "1.0.0",
-  "description": "MallMind project",
-  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "install-backend": "cd backend && npm install",
+    "start-backend": "cd backend && npm start",
+    "test": "cd backend && npm test"
+  }
 }
