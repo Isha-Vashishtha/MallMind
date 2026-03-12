@@ -1,0 +1,1 @@
+{\n  "name": "mall-mind",\n  "version": "1.0.0",\n  "description": "MallMind project",\n  "main": "index.js",\n  "scripts": {\n    "test": "jest",\n    "start": "node index.js"\n  },\n  "keywords": [],\n  "author": "",\n  "license": "ISC",\n  "dependencies": {},\n  "devDependencies": {\n    "jest": "^29.0.0"\n  }\n}
