@@ -1,3 +1,5 @@
+import Inventory from "../models/Inventory.js";
+
 async function searchInventory(product, color, budget) {
   return await Inventory.find({
     item: { $regex: product, $options: "i" },
@@ -5,3 +7,5 @@ async function searchInventory(product, color, budget) {
     price: { $lte: budget }
   });
 }
+
+export { searchInventory };

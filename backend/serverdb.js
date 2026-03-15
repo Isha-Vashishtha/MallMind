@@ -1,8 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import dotenv from "dotenv";
+dotenv.config();
 
-const inventoryRoutes = require("./routes/inventoryRoutes");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+
+import inventoryRoutes from "./routes/inventoryRoutes.js";
 
 const app = express();
 
@@ -10,11 +13,13 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 app.use("/api/inventory", inventoryRoutes);
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = 5001;
+
+app.listen(PORT, () => {
+  console.log(`Inventory API running on port ${PORT}`);
 });
